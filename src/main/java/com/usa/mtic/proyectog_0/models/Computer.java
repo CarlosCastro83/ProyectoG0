@@ -24,11 +24,11 @@ public class Computer implements Serializable {
     private Category category;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "computer")
-    @JsonIgnoreProperties("computer")
+    @JsonIgnoreProperties({"computer", "client"})
     private List<Message> messages;
 
     @OneToMany(cascade = {CascadeType.PERSIST}, mappedBy = "computer")
-    @JsonIgnoreProperties("computer")
+    @JsonIgnoreProperties({"computer", "messages"})
     private List<Reservation> reservations;
 
     public Integer getId() {

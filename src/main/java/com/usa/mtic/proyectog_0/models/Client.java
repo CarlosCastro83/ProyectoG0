@@ -26,6 +26,20 @@ public class Client implements Serializable {
     @JsonIgnoreProperties("client")
     private List<Reservation> reservations;
 
+    public Client(){
+
+    }
+
+    public Client(Integer idClient, String name, String email, String password, Integer age, List<Message> messages, List<Reservation> reservations) {
+        this.idClient = idClient;
+        this.name = name;
+        this.email = email;
+        this.password = password;
+        this.age = age;
+        this.messages = messages;
+        this.reservations = reservations;
+    }
+
     public Integer getIdClient() {
         return idClient;
     }

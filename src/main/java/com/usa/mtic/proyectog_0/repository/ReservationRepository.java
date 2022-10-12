@@ -1,6 +1,5 @@
 package com.usa.mtic.proyectog_0.repository;
 
-import com.usa.mtic.proyectog_0.models.Message;
 import com.usa.mtic.proyectog_0.models.Reservation;
 import com.usa.mtic.proyectog_0.repository.crudRepository.ReservationCrudRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +18,7 @@ public class ReservationRepository {
         return (List<Reservation>) reservationCrudRepository.findAll();
     }
 
-    public Optional<Reservation> getComputer(int id){
+    public Optional<Reservation> getReservation(int id){
         return reservationCrudRepository.findById(id);
     }
 

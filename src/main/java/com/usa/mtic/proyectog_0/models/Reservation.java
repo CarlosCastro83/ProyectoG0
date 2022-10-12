@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Date;
 
 @Entity
 @Table(name = "reservation")
@@ -11,47 +12,58 @@ public class Reservation implements Serializable {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
-    private String startDate;
-    private String devolutionDate;
-    private String status;
+    private Integer idReservation;
+    private Date startDate;
+    private Date devolutionDate;
+    private String status = "created";
 
     @ManyToOne
-    @JoinColumn(name = "computer_id")
+    @JoinColumn(name = "computerId")
     @JsonIgnoreProperties("reservations")
     private Computer computer;
 
     @ManyToOne
-    @JoinColumn(name = "client_id")
-    @JsonIgnoreProperties("reservations")
+    @JoinColumn(name = "clientId")
+    @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
-    @OneToOne
-    @JoinColumn(name = "score_id")
-    @JsonIgnoreProperties("reservation")
-    private Score score;
+    private String score;
 
-    public Integer getId() {
-        return id;
+    public Reservation(){
+
     }
 
-    public void setId(Integer id) {
-        this.id = id;
+    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, String status, Computer computer, Client client, String score) {
+        this.idReservation = idReservation;
+        this.startDate = startDate;
+        this.devolutionDate = devolutionDate;
+        this.status = status;
+        this.computer = computer;
+        this.client = client;
+        this.score = score;
     }
 
-    public String getStartDate() {
+    public Integer getIdReservation() {
+        return idReservation;
+    }
+
+    public void setIdReservation(Integer idReservation) {
+        this.idReservation = idReservation;
+    }
+
+    public Date getStartDate() {
         return startDate;
     }
 
-    public void setStartDate(String startDate) {
+    public void setStartDate(Date startDate) {
         this.startDate = startDate;
     }
 
-    public String getDevolutionDate() {
+    public Date getDevolutionDate() {
         return devolutionDate;
     }
 
-    public void setDevolutionDate(String devolutionDate) {
+    public void setDevolutionDate(Date devolutionDate) {
         this.devolutionDate = devolutionDate;
     }
 
@@ -79,11 +91,11 @@ public class Reservation implements Serializable {
         this.client = client;
     }
 
-    public Score getScore() {
+    public String getScore() {
         return score;
     }
 
-    public void setScore(Score score) {
+    public void setScore(String score) {
         this.score = score;
     }
 }
