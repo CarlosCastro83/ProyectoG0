@@ -3,6 +3,7 @@ package com.usa.mtic.proyectog_0.controller;
 import com.usa.mtic.proyectog_0.models.Client;
 import com.usa.mtic.proyectog_0.service.ClientService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class ClientController {
         return clientService.getAll();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
     public Client save(@RequestBody Client l){
         return clientService.save(l);

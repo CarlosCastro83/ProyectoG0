@@ -3,6 +3,7 @@ package com.usa.mtic.proyectog_0.controller;
 import com.usa.mtic.proyectog_0.models.Computer;
 import com.usa.mtic.proyectog_0.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -19,6 +20,7 @@ public class ComputerController {
         return computerService.getAll();
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
     public Computer save(@RequestBody Computer c){
         return computerService.save(c);
