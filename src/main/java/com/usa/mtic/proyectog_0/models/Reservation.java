@@ -18,30 +18,16 @@ public class Reservation implements Serializable {
     private String status = "created";
 
     @ManyToOne
-    @JoinColumn(name = "computerId")
+    @JoinColumn(name = "idComputer")
     @JsonIgnoreProperties("reservations")
     private Computer computer;
 
     @ManyToOne
-    @JoinColumn(name = "clientId")
+    @JoinColumn(name = "idClient")
     @JsonIgnoreProperties({"reservations", "messages"})
     private Client client;
 
     private String score;
-
-    public Reservation(){
-
-    }
-
-    public Reservation(Integer idReservation, Date startDate, Date devolutionDate, String status, Computer computer, Client client, String score) {
-        this.idReservation = idReservation;
-        this.startDate = startDate;
-        this.devolutionDate = devolutionDate;
-        this.status = status;
-        this.computer = computer;
-        this.client = client;
-        this.score = score;
-    }
 
     public Integer getIdReservation() {
         return idReservation;
