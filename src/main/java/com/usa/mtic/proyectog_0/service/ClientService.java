@@ -39,23 +39,17 @@ public class ClientService {
         if (l.getIdClient()!=null){
             Optional<Client> q =clientRepository.getClient(l.getIdClient());
             if (q.isPresent()){
-                if (l.getName()!=null){
-                    q.get().setName(l.getName());
-                }
                 if (l.getEmail()!=null){
                     q.get().setEmail(l.getEmail());
                 }
                 if (l.getPassword()!=null){
                     q.get().setPassword(l.getPassword());
                 }
+                if (l.getName()!=null){
+                    q.get().setName(l.getName());
+                }
                 if (l.getAge()!=null){
                     q.get().setAge(l.getAge());
-                }
-                if (l.getMessages()!=null){
-                    q.get().setMessages(l.getMessages());
-                }
-                if (l.getReservations()!=null){
-                    q.get().setReservations(l.getReservations());
                 }
                 clientRepository.save(q.get());
                 return q.get();

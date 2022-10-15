@@ -42,9 +42,6 @@ public class CategoryService {
                 if (a.getDescription()!=null){
                     q.get().setDescription(a.getDescription());
                 }
-                if (a.getComputers()!=null){
-                    q.get().setComputers(a.getComputers());
-                }
                 categoryRepository.save(q.get());
                 return q.get();
             }else {

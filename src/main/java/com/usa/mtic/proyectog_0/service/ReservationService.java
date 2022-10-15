@@ -48,15 +48,6 @@ public class ReservationService {
                 if (r.getStatus()!=null){
                     q.get().setStatus(r.getStatus());
                 }
-                if (r.getComputer()!=null){
-                    q.get().setComputer(r.getComputer());
-                }
-                if (r.getClient()!=null){
-                    q.get().setClient(r.getClient());
-                }
-                if (r.getScore()!=null){
-                    q.get().setScore(r.getScore());
-                }
                 reservationRepository.save(q.get());
                 return q.get();
             }else {

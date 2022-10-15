@@ -1,5 +1,6 @@
 package com.usa.mtic.proyectog_0.controller;
 
+import com.usa.mtic.proyectog_0.models.Category;
 import com.usa.mtic.proyectog_0.models.Computer;
 import com.usa.mtic.proyectog_0.service.ComputerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,22 @@ public class ComputerController {
         return computerService.getAll();
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
+
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Computer save(@RequestBody Computer c){
         return computerService.save(c);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Computer update(@RequestBody Computer c){
+        return computerService.update(c);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return computerService.delete(id);
     }
 }

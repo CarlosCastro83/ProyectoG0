@@ -1,5 +1,6 @@
 package com.usa.mtic.proyectog_0.controller;
 
+import com.usa.mtic.proyectog_0.models.Category;
 import com.usa.mtic.proyectog_0.models.Reservation;
 import com.usa.mtic.proyectog_0.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +21,21 @@ public class ReservationController {
         return reservationService.getAll();
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation r){
         return reservationService.save(r);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Reservation update(@RequestBody Reservation r){
+        return reservationService.update(r);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return reservationService.delete(id);
     }
 }

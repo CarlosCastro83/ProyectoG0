@@ -54,12 +54,6 @@ public class ComputerService {
                 if (c.getCategory()!=null){
                     q.get().setCategory(c.getCategory());
                 }
-                if (c.getMessages()!=null){
-                    q.get().setMessages(c.getMessages());
-                }
-                if (c.getReservations()!=null){
-                    q.get().setReservations(c.getReservations());
-                }
                 computerRepository.save(q.get());
                 return q.get();
             }else {

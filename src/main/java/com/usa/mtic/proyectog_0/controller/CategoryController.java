@@ -15,15 +15,26 @@ public class CategoryController {
     @Autowired
     private CategoryService categoryService;
 
-
     @GetMapping("/all")
     public List<Category> getAll(){
         return categoryService.getAll();
     }
 
-    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping("/save")
+    @ResponseStatus(HttpStatus.CREATED)
     public Category save(@RequestBody Category a){
         return categoryService.save(a);
+    }
+
+    @PutMapping("/update")
+    @ResponseStatus(HttpStatus.CREATED)
+    public Category update(@RequestBody Category a){
+        return categoryService.update(a);
+    }
+
+    @DeleteMapping("/{id}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public boolean delete(@PathVariable("id") int id){
+        return categoryService.delete(id);
     }
 }

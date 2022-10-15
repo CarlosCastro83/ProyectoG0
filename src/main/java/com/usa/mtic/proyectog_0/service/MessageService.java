@@ -42,12 +42,6 @@ public class MessageService {
                 if (m.getMessageText()!=null){
                     q.get().setMessageText(m.getMessageText());
                 }
-                if (m.getComputer()!=null){
-                    q.get().setComputer(m.getComputer());
-                }
-                if (m.getClient()!=null){
-                    q.get().setClient(m.getClient());
-                }
                 messageRepository.save(q.get());
                 return q.get();
             }else {
