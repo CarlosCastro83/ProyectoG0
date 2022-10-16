@@ -2,6 +2,8 @@ package com.usa.mtic.proyectog_0.controller;
 
 import com.usa.mtic.proyectog_0.models.Category;
 import com.usa.mtic.proyectog_0.models.Reservation;
+import com.usa.mtic.proyectog_0.models.dto.StatusAccount;
+import com.usa.mtic.proyectog_0.models.dto.TopClients;
 import com.usa.mtic.proyectog_0.service.ReservationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -25,6 +27,21 @@ public class ReservationController {
     @ResponseStatus(HttpStatus.CREATED)
     public Reservation save(@RequestBody Reservation r){
         return reservationService.save(r);
+    }
+
+    @GetMapping("report-dates/{dateA}/{dateB}")
+    public List<Reservation> getByDates(@PathVariable("dateA")String da,@PathVariable("dateB")String db){
+        return reservationService.getReservationsByPeriod(da,db);
+    }
+
+    @GetMapping("/report-status")
+    public StatusAccount getByStatus(){
+        return reservationService.getReportByStatus();
+    }
+
+    @GetMapping("/report-clients")
+    public List<TopClients> getTopClients(){
+        return reservationService.getTopClients();
     }
 
     @PutMapping("/update")
